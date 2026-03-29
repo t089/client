@@ -25,10 +25,10 @@ import SwiftkubeModel
 
 public protocol ResourceV1Beta2API: Sendable {
 
-	var deviceClasses: ClusterScopedGenericKubernetesClient<resource.v1beta2.DeviceClass> { get }
-	var resourceClaims: NamespacedGenericKubernetesClient<resource.v1beta2.ResourceClaim> { get }
-	var resourceClaimTemplates: NamespacedGenericKubernetesClient<resource.v1beta2.ResourceClaimTemplate> { get }
-	var resourceSlices: ClusterScopedGenericKubernetesClient<resource.v1beta2.ResourceSlice> { get }
+	var deviceClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.DeviceClass> { get }
+	var resourceClaims: NamespacedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.ResourceClaim> { get }
+	var resourceClaimTemplates: NamespacedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.ResourceClaimTemplate> { get }
+	var resourceSlices: ClusterScopedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.ResourceSlice> { get }
 }
 
 /// DSL for `resource.k8s.io.v1beta2` API Group
@@ -41,17 +41,17 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var deviceClasses: ClusterScopedGenericKubernetesClient<resource.v1beta2.DeviceClass> {
-			client.clusterScoped(for: resource.v1beta2.DeviceClass.self)
+		public var deviceClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.DeviceClass> {
+			client.clusterScoped(for: SwiftkubeModel.resource.v1beta2.DeviceClass.self)
 		}
-		public var resourceClaims: NamespacedGenericKubernetesClient<resource.v1beta2.ResourceClaim> {
-			client.namespaceScoped(for: resource.v1beta2.ResourceClaim.self)
+		public var resourceClaims: NamespacedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.ResourceClaim> {
+			client.namespaceScoped(for: SwiftkubeModel.resource.v1beta2.ResourceClaim.self)
 		}
-		public var resourceClaimTemplates: NamespacedGenericKubernetesClient<resource.v1beta2.ResourceClaimTemplate> {
-			client.namespaceScoped(for: resource.v1beta2.ResourceClaimTemplate.self)
+		public var resourceClaimTemplates: NamespacedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.ResourceClaimTemplate> {
+			client.namespaceScoped(for: SwiftkubeModel.resource.v1beta2.ResourceClaimTemplate.self)
 		}
-		public var resourceSlices: ClusterScopedGenericKubernetesClient<resource.v1beta2.ResourceSlice> {
-			client.clusterScoped(for: resource.v1beta2.ResourceSlice.self)
+		public var resourceSlices: ClusterScopedGenericKubernetesClient<SwiftkubeModel.resource.v1beta2.ResourceSlice> {
+			client.clusterScoped(for: SwiftkubeModel.resource.v1beta2.ResourceSlice.self)
 		}
 	}
 

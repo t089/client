@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol InternalV1Alpha1API: Sendable {
 
-	var storageVersions: ClusterScopedGenericKubernetesClient<`internal`.v1alpha1.StorageVersion> { get }
+	var storageVersions: ClusterScopedGenericKubernetesClient<SwiftkubeModel.`internal`.v1alpha1.StorageVersion> { get }
 }
 
 /// DSL for `internal.apiserver.k8s.io.v1alpha1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var storageVersions: ClusterScopedGenericKubernetesClient<`internal`.v1alpha1.StorageVersion> {
-			client.clusterScoped(for: `internal`.v1alpha1.StorageVersion.self)
+		public var storageVersions: ClusterScopedGenericKubernetesClient<SwiftkubeModel.`internal`.v1alpha1.StorageVersion> {
+			client.clusterScoped(for: SwiftkubeModel.`internal`.v1alpha1.StorageVersion.self)
 		}
 	}
 

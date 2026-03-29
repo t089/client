@@ -25,11 +25,11 @@ import SwiftkubeModel
 
 public protocol AppsV1API: Sendable {
 
-	var controllerRevisions: NamespacedGenericKubernetesClient<apps.v1.ControllerRevision> { get }
-	var daemonSets: NamespacedGenericKubernetesClient<apps.v1.DaemonSet> { get }
-	var deployments: NamespacedGenericKubernetesClient<apps.v1.Deployment> { get }
-	var replicaSets: NamespacedGenericKubernetesClient<apps.v1.ReplicaSet> { get }
-	var statefulSets: NamespacedGenericKubernetesClient<apps.v1.StatefulSet> { get }
+	var controllerRevisions: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.ControllerRevision> { get }
+	var daemonSets: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.DaemonSet> { get }
+	var deployments: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.Deployment> { get }
+	var replicaSets: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.ReplicaSet> { get }
+	var statefulSets: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.StatefulSet> { get }
 }
 
 /// DSL for `apps.v1` API Group
@@ -42,20 +42,20 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var controllerRevisions: NamespacedGenericKubernetesClient<apps.v1.ControllerRevision> {
-			client.namespaceScoped(for: apps.v1.ControllerRevision.self)
+		public var controllerRevisions: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.ControllerRevision> {
+			client.namespaceScoped(for: SwiftkubeModel.apps.v1.ControllerRevision.self)
 		}
-		public var daemonSets: NamespacedGenericKubernetesClient<apps.v1.DaemonSet> {
-			client.namespaceScoped(for: apps.v1.DaemonSet.self)
+		public var daemonSets: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.DaemonSet> {
+			client.namespaceScoped(for: SwiftkubeModel.apps.v1.DaemonSet.self)
 		}
-		public var deployments: NamespacedGenericKubernetesClient<apps.v1.Deployment> {
-			client.namespaceScoped(for: apps.v1.Deployment.self)
+		public var deployments: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.Deployment> {
+			client.namespaceScoped(for: SwiftkubeModel.apps.v1.Deployment.self)
 		}
-		public var replicaSets: NamespacedGenericKubernetesClient<apps.v1.ReplicaSet> {
-			client.namespaceScoped(for: apps.v1.ReplicaSet.self)
+		public var replicaSets: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.ReplicaSet> {
+			client.namespaceScoped(for: SwiftkubeModel.apps.v1.ReplicaSet.self)
 		}
-		public var statefulSets: NamespacedGenericKubernetesClient<apps.v1.StatefulSet> {
-			client.namespaceScoped(for: apps.v1.StatefulSet.self)
+		public var statefulSets: NamespacedGenericKubernetesClient<SwiftkubeModel.apps.v1.StatefulSet> {
+			client.namespaceScoped(for: SwiftkubeModel.apps.v1.StatefulSet.self)
 		}
 	}
 

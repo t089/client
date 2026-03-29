@@ -25,9 +25,9 @@ import SwiftkubeModel
 
 public protocol AuthenticationV1API: Sendable {
 
-	var selfSubjectReviews: ClusterScopedGenericKubernetesClient<authentication.v1.SelfSubjectReview> { get }
-	var tokenRequests: NamespacedGenericKubernetesClient<authentication.v1.TokenRequest> { get }
-	var tokenReviews: ClusterScopedGenericKubernetesClient<authentication.v1.TokenReview> { get }
+	var selfSubjectReviews: ClusterScopedGenericKubernetesClient<SwiftkubeModel.authentication.v1.SelfSubjectReview> { get }
+	var tokenRequests: NamespacedGenericKubernetesClient<SwiftkubeModel.authentication.v1.TokenRequest> { get }
+	var tokenReviews: ClusterScopedGenericKubernetesClient<SwiftkubeModel.authentication.v1.TokenReview> { get }
 }
 
 /// DSL for `authentication.k8s.io.v1` API Group
@@ -40,14 +40,14 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var selfSubjectReviews: ClusterScopedGenericKubernetesClient<authentication.v1.SelfSubjectReview> {
-			client.clusterScoped(for: authentication.v1.SelfSubjectReview.self)
+		public var selfSubjectReviews: ClusterScopedGenericKubernetesClient<SwiftkubeModel.authentication.v1.SelfSubjectReview> {
+			client.clusterScoped(for: SwiftkubeModel.authentication.v1.SelfSubjectReview.self)
 		}
-		public var tokenRequests: NamespacedGenericKubernetesClient<authentication.v1.TokenRequest> {
-			client.namespaceScoped(for: authentication.v1.TokenRequest.self)
+		public var tokenRequests: NamespacedGenericKubernetesClient<SwiftkubeModel.authentication.v1.TokenRequest> {
+			client.namespaceScoped(for: SwiftkubeModel.authentication.v1.TokenRequest.self)
 		}
-		public var tokenReviews: ClusterScopedGenericKubernetesClient<authentication.v1.TokenReview> {
-			client.clusterScoped(for: authentication.v1.TokenReview.self)
+		public var tokenReviews: ClusterScopedGenericKubernetesClient<SwiftkubeModel.authentication.v1.TokenReview> {
+			client.clusterScoped(for: SwiftkubeModel.authentication.v1.TokenReview.self)
 		}
 	}
 

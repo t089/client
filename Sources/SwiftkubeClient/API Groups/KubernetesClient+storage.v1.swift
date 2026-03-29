@@ -25,11 +25,12 @@ import SwiftkubeModel
 
 public protocol StorageV1API: Sendable {
 
-	var csiDrivers: ClusterScopedGenericKubernetesClient<storage.v1.CSIDriver> { get }
-	var csiNodes: ClusterScopedGenericKubernetesClient<storage.v1.CSINode> { get }
-	var csiStorageCapacities: NamespacedGenericKubernetesClient<storage.v1.CSIStorageCapacity> { get }
-	var storageClasses: ClusterScopedGenericKubernetesClient<storage.v1.StorageClass> { get }
-	var volumeAttachments: ClusterScopedGenericKubernetesClient<storage.v1.VolumeAttachment> { get }
+	var csiDrivers: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.CSIDriver> { get }
+	var csiNodes: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.CSINode> { get }
+	var csiStorageCapacities: NamespacedGenericKubernetesClient<SwiftkubeModel.storage.v1.CSIStorageCapacity> { get }
+	var storageClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.StorageClass> { get }
+	var volumeAttachments: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.VolumeAttachment> { get }
+	var volumeAttributesClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.VolumeAttributesClass> { get }
 }
 
 /// DSL for `storage.k8s.io.v1` API Group
@@ -42,20 +43,23 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var csiDrivers: ClusterScopedGenericKubernetesClient<storage.v1.CSIDriver> {
-			client.clusterScoped(for: storage.v1.CSIDriver.self)
+		public var csiDrivers: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.CSIDriver> {
+			client.clusterScoped(for: SwiftkubeModel.storage.v1.CSIDriver.self)
 		}
-		public var csiNodes: ClusterScopedGenericKubernetesClient<storage.v1.CSINode> {
-			client.clusterScoped(for: storage.v1.CSINode.self)
+		public var csiNodes: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.CSINode> {
+			client.clusterScoped(for: SwiftkubeModel.storage.v1.CSINode.self)
 		}
-		public var csiStorageCapacities: NamespacedGenericKubernetesClient<storage.v1.CSIStorageCapacity> {
-			client.namespaceScoped(for: storage.v1.CSIStorageCapacity.self)
+		public var csiStorageCapacities: NamespacedGenericKubernetesClient<SwiftkubeModel.storage.v1.CSIStorageCapacity> {
+			client.namespaceScoped(for: SwiftkubeModel.storage.v1.CSIStorageCapacity.self)
 		}
-		public var storageClasses: ClusterScopedGenericKubernetesClient<storage.v1.StorageClass> {
-			client.clusterScoped(for: storage.v1.StorageClass.self)
+		public var storageClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.StorageClass> {
+			client.clusterScoped(for: SwiftkubeModel.storage.v1.StorageClass.self)
 		}
-		public var volumeAttachments: ClusterScopedGenericKubernetesClient<storage.v1.VolumeAttachment> {
-			client.clusterScoped(for: storage.v1.VolumeAttachment.self)
+		public var volumeAttachments: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.VolumeAttachment> {
+			client.clusterScoped(for: SwiftkubeModel.storage.v1.VolumeAttachment.self)
+		}
+		public var volumeAttributesClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1.VolumeAttributesClass> {
+			client.clusterScoped(for: SwiftkubeModel.storage.v1.VolumeAttributesClass.self)
 		}
 	}
 

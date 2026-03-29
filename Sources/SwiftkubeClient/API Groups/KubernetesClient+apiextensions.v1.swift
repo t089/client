@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol APIExtensionsV1API: Sendable {
 
-	var customResourceDefinitions: ClusterScopedGenericKubernetesClient<apiextensions.v1.CustomResourceDefinition> { get }
+	var customResourceDefinitions: ClusterScopedGenericKubernetesClient<SwiftkubeModel.apiextensions.v1.CustomResourceDefinition> { get }
 }
 
 /// DSL for `apiextensions.k8s.io.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var customResourceDefinitions: ClusterScopedGenericKubernetesClient<apiextensions.v1.CustomResourceDefinition> {
-			client.clusterScoped(for: apiextensions.v1.CustomResourceDefinition.self)
+		public var customResourceDefinitions: ClusterScopedGenericKubernetesClient<SwiftkubeModel.apiextensions.v1.CustomResourceDefinition> {
+			client.clusterScoped(for: SwiftkubeModel.apiextensions.v1.CustomResourceDefinition.self)
 		}
 	}
 

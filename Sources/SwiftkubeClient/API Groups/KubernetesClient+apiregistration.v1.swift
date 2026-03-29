@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol APIRegistrationV1API: Sendable {
 
-	var apiServices: ClusterScopedGenericKubernetesClient<apiregistration.v1.APIService> { get }
+	var apiServices: ClusterScopedGenericKubernetesClient<SwiftkubeModel.apiregistration.v1.APIService> { get }
 }
 
 /// DSL for `apiregistration.k8s.io.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var apiServices: ClusterScopedGenericKubernetesClient<apiregistration.v1.APIService> {
-			client.clusterScoped(for: apiregistration.v1.APIService.self)
+		public var apiServices: ClusterScopedGenericKubernetesClient<SwiftkubeModel.apiregistration.v1.APIService> {
+			client.clusterScoped(for: SwiftkubeModel.apiregistration.v1.APIService.self)
 		}
 	}
 

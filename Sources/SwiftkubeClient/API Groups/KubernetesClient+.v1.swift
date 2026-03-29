@@ -25,23 +25,23 @@ import SwiftkubeModel
 
 public protocol CoreV1API: Sendable {
 
-	var bindings: NamespacedGenericKubernetesClient<core.v1.Binding> { get }
-	var componentStatuses: ClusterScopedGenericKubernetesClient<core.v1.ComponentStatus> { get }
-	var configMaps: NamespacedGenericKubernetesClient<core.v1.ConfigMap> { get }
-	var endpoints: NamespacedGenericKubernetesClient<core.v1.Endpoints> { get }
-	var events: NamespacedGenericKubernetesClient<core.v1.Event> { get }
-	var limitRanges: NamespacedGenericKubernetesClient<core.v1.LimitRange> { get }
-	var namespaces: ClusterScopedGenericKubernetesClient<core.v1.Namespace> { get }
-	var nodes: ClusterScopedGenericKubernetesClient<core.v1.Node> { get }
-	var persistentVolumes: ClusterScopedGenericKubernetesClient<core.v1.PersistentVolume> { get }
-	var persistentVolumeClaims: NamespacedGenericKubernetesClient<core.v1.PersistentVolumeClaim> { get }
-	var pods: NamespacedGenericKubernetesClient<core.v1.Pod> { get }
-	var podTemplates: NamespacedGenericKubernetesClient<core.v1.PodTemplate> { get }
-	var replicationControllers: NamespacedGenericKubernetesClient<core.v1.ReplicationController> { get }
-	var resourceQuotas: NamespacedGenericKubernetesClient<core.v1.ResourceQuota> { get }
-	var secrets: NamespacedGenericKubernetesClient<core.v1.Secret> { get }
-	var services: NamespacedGenericKubernetesClient<core.v1.Service> { get }
-	var serviceAccounts: NamespacedGenericKubernetesClient<core.v1.ServiceAccount> { get }
+	var bindings: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Binding> { get }
+	var componentStatuses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.ComponentStatus> { get }
+	var configMaps: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ConfigMap> { get }
+	var endpoints: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Endpoints> { get }
+	var events: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Event> { get }
+	var limitRanges: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.LimitRange> { get }
+	var namespaces: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.Namespace> { get }
+	var nodes: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.Node> { get }
+	var persistentVolumes: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.PersistentVolume> { get }
+	var persistentVolumeClaims: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.PersistentVolumeClaim> { get }
+	var pods: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Pod> { get }
+	var podTemplates: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.PodTemplate> { get }
+	var replicationControllers: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ReplicationController> { get }
+	var resourceQuotas: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ResourceQuota> { get }
+	var secrets: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Secret> { get }
+	var services: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Service> { get }
+	var serviceAccounts: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ServiceAccount> { get }
 }
 
 /// DSL for `core.v1` API Group
@@ -54,56 +54,56 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var bindings: NamespacedGenericKubernetesClient<core.v1.Binding> {
-			client.namespaceScoped(for: core.v1.Binding.self)
+		public var bindings: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Binding> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.Binding.self)
 		}
-		public var componentStatuses: ClusterScopedGenericKubernetesClient<core.v1.ComponentStatus> {
-			client.clusterScoped(for: core.v1.ComponentStatus.self)
+		public var componentStatuses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.ComponentStatus> {
+			client.clusterScoped(for: SwiftkubeModel.core.v1.ComponentStatus.self)
 		}
-		public var configMaps: NamespacedGenericKubernetesClient<core.v1.ConfigMap> {
-			client.namespaceScoped(for: core.v1.ConfigMap.self)
+		public var configMaps: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ConfigMap> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.ConfigMap.self)
 		}
-		public var endpoints: NamespacedGenericKubernetesClient<core.v1.Endpoints> {
-			client.namespaceScoped(for: core.v1.Endpoints.self)
+		public var endpoints: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Endpoints> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.Endpoints.self)
 		}
-		public var events: NamespacedGenericKubernetesClient<core.v1.Event> {
-			client.namespaceScoped(for: core.v1.Event.self)
+		public var events: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Event> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.Event.self)
 		}
-		public var limitRanges: NamespacedGenericKubernetesClient<core.v1.LimitRange> {
-			client.namespaceScoped(for: core.v1.LimitRange.self)
+		public var limitRanges: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.LimitRange> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.LimitRange.self)
 		}
-		public var namespaces: ClusterScopedGenericKubernetesClient<core.v1.Namespace> {
-			client.clusterScoped(for: core.v1.Namespace.self)
+		public var namespaces: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.Namespace> {
+			client.clusterScoped(for: SwiftkubeModel.core.v1.Namespace.self)
 		}
-		public var nodes: ClusterScopedGenericKubernetesClient<core.v1.Node> {
-			client.clusterScoped(for: core.v1.Node.self)
+		public var nodes: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.Node> {
+			client.clusterScoped(for: SwiftkubeModel.core.v1.Node.self)
 		}
-		public var persistentVolumes: ClusterScopedGenericKubernetesClient<core.v1.PersistentVolume> {
-			client.clusterScoped(for: core.v1.PersistentVolume.self)
+		public var persistentVolumes: ClusterScopedGenericKubernetesClient<SwiftkubeModel.core.v1.PersistentVolume> {
+			client.clusterScoped(for: SwiftkubeModel.core.v1.PersistentVolume.self)
 		}
-		public var persistentVolumeClaims: NamespacedGenericKubernetesClient<core.v1.PersistentVolumeClaim> {
-			client.namespaceScoped(for: core.v1.PersistentVolumeClaim.self)
+		public var persistentVolumeClaims: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.PersistentVolumeClaim> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.PersistentVolumeClaim.self)
 		}
-		public var pods: NamespacedGenericKubernetesClient<core.v1.Pod> {
-			client.namespaceScoped(for: core.v1.Pod.self)
+		public var pods: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Pod> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.Pod.self)
 		}
-		public var podTemplates: NamespacedGenericKubernetesClient<core.v1.PodTemplate> {
-			client.namespaceScoped(for: core.v1.PodTemplate.self)
+		public var podTemplates: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.PodTemplate> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.PodTemplate.self)
 		}
-		public var replicationControllers: NamespacedGenericKubernetesClient<core.v1.ReplicationController> {
-			client.namespaceScoped(for: core.v1.ReplicationController.self)
+		public var replicationControllers: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ReplicationController> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.ReplicationController.self)
 		}
-		public var resourceQuotas: NamespacedGenericKubernetesClient<core.v1.ResourceQuota> {
-			client.namespaceScoped(for: core.v1.ResourceQuota.self)
+		public var resourceQuotas: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ResourceQuota> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.ResourceQuota.self)
 		}
-		public var secrets: NamespacedGenericKubernetesClient<core.v1.Secret> {
-			client.namespaceScoped(for: core.v1.Secret.self)
+		public var secrets: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Secret> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.Secret.self)
 		}
-		public var services: NamespacedGenericKubernetesClient<core.v1.Service> {
-			client.namespaceScoped(for: core.v1.Service.self)
+		public var services: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.Service> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.Service.self)
 		}
-		public var serviceAccounts: NamespacedGenericKubernetesClient<core.v1.ServiceAccount> {
-			client.namespaceScoped(for: core.v1.ServiceAccount.self)
+		public var serviceAccounts: NamespacedGenericKubernetesClient<SwiftkubeModel.core.v1.ServiceAccount> {
+			client.namespaceScoped(for: SwiftkubeModel.core.v1.ServiceAccount.self)
 		}
 	}
 

@@ -25,10 +25,10 @@ import SwiftkubeModel
 
 public protocol AdmissionRegistrationV1API: Sendable {
 
-	var mutatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<admissionregistration.v1.MutatingWebhookConfiguration> { get }
-	var validatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<admissionregistration.v1.ValidatingAdmissionPolicy> { get }
-	var validatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<admissionregistration.v1.ValidatingAdmissionPolicyBinding> { get }
-	var validatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<admissionregistration.v1.ValidatingWebhookConfiguration> { get }
+	var mutatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.MutatingWebhookConfiguration> { get }
+	var validatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.ValidatingAdmissionPolicy> { get }
+	var validatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.ValidatingAdmissionPolicyBinding> { get }
+	var validatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.ValidatingWebhookConfiguration> { get }
 }
 
 /// DSL for `admissionregistration.k8s.io.v1` API Group
@@ -41,17 +41,17 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var mutatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<admissionregistration.v1.MutatingWebhookConfiguration> {
-			client.clusterScoped(for: admissionregistration.v1.MutatingWebhookConfiguration.self)
+		public var mutatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.MutatingWebhookConfiguration> {
+			client.clusterScoped(for: SwiftkubeModel.admissionregistration.v1.MutatingWebhookConfiguration.self)
 		}
-		public var validatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<admissionregistration.v1.ValidatingAdmissionPolicy> {
-			client.clusterScoped(for: admissionregistration.v1.ValidatingAdmissionPolicy.self)
+		public var validatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.ValidatingAdmissionPolicy> {
+			client.clusterScoped(for: SwiftkubeModel.admissionregistration.v1.ValidatingAdmissionPolicy.self)
 		}
-		public var validatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<admissionregistration.v1.ValidatingAdmissionPolicyBinding> {
-			client.clusterScoped(for: admissionregistration.v1.ValidatingAdmissionPolicyBinding.self)
+		public var validatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.ValidatingAdmissionPolicyBinding> {
+			client.clusterScoped(for: SwiftkubeModel.admissionregistration.v1.ValidatingAdmissionPolicyBinding.self)
 		}
-		public var validatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<admissionregistration.v1.ValidatingWebhookConfiguration> {
-			client.clusterScoped(for: admissionregistration.v1.ValidatingWebhookConfiguration.self)
+		public var validatingWebhookConfigurations: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1.ValidatingWebhookConfiguration> {
+			client.clusterScoped(for: SwiftkubeModel.admissionregistration.v1.ValidatingWebhookConfiguration.self)
 		}
 	}
 

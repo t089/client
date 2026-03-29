@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol CertificatesV1API: Sendable {
 
-	var certificateSigningRequests: ClusterScopedGenericKubernetesClient<certificates.v1.CertificateSigningRequest> { get }
+	var certificateSigningRequests: ClusterScopedGenericKubernetesClient<SwiftkubeModel.certificates.v1.CertificateSigningRequest> { get }
 }
 
 /// DSL for `certificates.k8s.io.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var certificateSigningRequests: ClusterScopedGenericKubernetesClient<certificates.v1.CertificateSigningRequest> {
-			client.clusterScoped(for: certificates.v1.CertificateSigningRequest.self)
+		public var certificateSigningRequests: ClusterScopedGenericKubernetesClient<SwiftkubeModel.certificates.v1.CertificateSigningRequest> {
+			client.clusterScoped(for: SwiftkubeModel.certificates.v1.CertificateSigningRequest.self)
 		}
 	}
 

@@ -25,8 +25,8 @@ import SwiftkubeModel
 
 public protocol AdmissionRegistrationV1Alpha1API: Sendable {
 
-	var mutatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<admissionregistration.v1alpha1.MutatingAdmissionPolicy> { get }
-	var mutatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<admissionregistration.v1alpha1.MutatingAdmissionPolicyBinding> { get }
+	var mutatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1alpha1.MutatingAdmissionPolicy> { get }
+	var mutatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1alpha1.MutatingAdmissionPolicyBinding> { get }
 }
 
 /// DSL for `admissionregistration.k8s.io.v1alpha1` API Group
@@ -39,11 +39,11 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var mutatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<admissionregistration.v1alpha1.MutatingAdmissionPolicy> {
-			client.clusterScoped(for: admissionregistration.v1alpha1.MutatingAdmissionPolicy.self)
+		public var mutatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1alpha1.MutatingAdmissionPolicy> {
+			client.clusterScoped(for: SwiftkubeModel.admissionregistration.v1alpha1.MutatingAdmissionPolicy.self)
 		}
-		public var mutatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<admissionregistration.v1alpha1.MutatingAdmissionPolicyBinding> {
-			client.clusterScoped(for: admissionregistration.v1alpha1.MutatingAdmissionPolicyBinding.self)
+		public var mutatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<SwiftkubeModel.admissionregistration.v1alpha1.MutatingAdmissionPolicyBinding> {
+			client.clusterScoped(for: SwiftkubeModel.admissionregistration.v1alpha1.MutatingAdmissionPolicyBinding.self)
 		}
 	}
 

@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol AutoScalingV1API: Sendable {
 
-	var horizontalPodAutoscalers: NamespacedGenericKubernetesClient<autoscaling.v1.HorizontalPodAutoscaler> { get }
+	var horizontalPodAutoscalers: NamespacedGenericKubernetesClient<SwiftkubeModel.autoscaling.v1.HorizontalPodAutoscaler> { get }
 }
 
 /// DSL for `autoscaling.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var horizontalPodAutoscalers: NamespacedGenericKubernetesClient<autoscaling.v1.HorizontalPodAutoscaler> {
-			client.namespaceScoped(for: autoscaling.v1.HorizontalPodAutoscaler.self)
+		public var horizontalPodAutoscalers: NamespacedGenericKubernetesClient<SwiftkubeModel.autoscaling.v1.HorizontalPodAutoscaler> {
+			client.namespaceScoped(for: SwiftkubeModel.autoscaling.v1.HorizontalPodAutoscaler.self)
 		}
 	}
 

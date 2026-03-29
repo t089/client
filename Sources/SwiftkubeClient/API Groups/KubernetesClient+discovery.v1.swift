@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol DiscoveryV1API: Sendable {
 
-	var endpointSlices: NamespacedGenericKubernetesClient<discovery.v1.EndpointSlice> { get }
+	var endpointSlices: NamespacedGenericKubernetesClient<SwiftkubeModel.discovery.v1.EndpointSlice> { get }
 }
 
 /// DSL for `discovery.k8s.io.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var endpointSlices: NamespacedGenericKubernetesClient<discovery.v1.EndpointSlice> {
-			client.namespaceScoped(for: discovery.v1.EndpointSlice.self)
+		public var endpointSlices: NamespacedGenericKubernetesClient<SwiftkubeModel.discovery.v1.EndpointSlice> {
+			client.namespaceScoped(for: SwiftkubeModel.discovery.v1.EndpointSlice.self)
 		}
 	}
 

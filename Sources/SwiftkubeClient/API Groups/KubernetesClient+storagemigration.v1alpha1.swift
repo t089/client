@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol StorageVersionMigrationV1Alpha1API: Sendable {
 
-	var storageVersionMigrations: ClusterScopedGenericKubernetesClient<storagemigration.v1alpha1.StorageVersionMigration> { get }
+	var storageVersionMigrations: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storagemigration.v1alpha1.StorageVersionMigration> { get }
 }
 
 /// DSL for `storagemigration.k8s.io.v1alpha1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var storageVersionMigrations: ClusterScopedGenericKubernetesClient<storagemigration.v1alpha1.StorageVersionMigration> {
-			client.clusterScoped(for: storagemigration.v1alpha1.StorageVersionMigration.self)
+		public var storageVersionMigrations: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storagemigration.v1alpha1.StorageVersionMigration> {
+			client.clusterScoped(for: SwiftkubeModel.storagemigration.v1alpha1.StorageVersionMigration.self)
 		}
 	}
 

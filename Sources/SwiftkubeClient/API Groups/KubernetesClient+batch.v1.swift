@@ -25,8 +25,8 @@ import SwiftkubeModel
 
 public protocol BatchV1API: Sendable {
 
-	var cronJobs: NamespacedGenericKubernetesClient<batch.v1.CronJob> { get }
-	var jobs: NamespacedGenericKubernetesClient<batch.v1.Job> { get }
+	var cronJobs: NamespacedGenericKubernetesClient<SwiftkubeModel.batch.v1.CronJob> { get }
+	var jobs: NamespacedGenericKubernetesClient<SwiftkubeModel.batch.v1.Job> { get }
 }
 
 /// DSL for `batch.v1` API Group
@@ -39,11 +39,11 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var cronJobs: NamespacedGenericKubernetesClient<batch.v1.CronJob> {
-			client.namespaceScoped(for: batch.v1.CronJob.self)
+		public var cronJobs: NamespacedGenericKubernetesClient<SwiftkubeModel.batch.v1.CronJob> {
+			client.namespaceScoped(for: SwiftkubeModel.batch.v1.CronJob.self)
 		}
-		public var jobs: NamespacedGenericKubernetesClient<batch.v1.Job> {
-			client.namespaceScoped(for: batch.v1.Job.self)
+		public var jobs: NamespacedGenericKubernetesClient<SwiftkubeModel.batch.v1.Job> {
+			client.namespaceScoped(for: SwiftkubeModel.batch.v1.Job.self)
 		}
 	}
 

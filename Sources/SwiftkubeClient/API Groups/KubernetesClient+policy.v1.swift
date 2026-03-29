@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol PolicyV1API: Sendable {
 
-	var podDisruptionBudgets: NamespacedGenericKubernetesClient<policy.v1.PodDisruptionBudget> { get }
+	var podDisruptionBudgets: NamespacedGenericKubernetesClient<SwiftkubeModel.policy.v1.PodDisruptionBudget> { get }
 }
 
 /// DSL for `policy.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var podDisruptionBudgets: NamespacedGenericKubernetesClient<policy.v1.PodDisruptionBudget> {
-			client.namespaceScoped(for: policy.v1.PodDisruptionBudget.self)
+		public var podDisruptionBudgets: NamespacedGenericKubernetesClient<SwiftkubeModel.policy.v1.PodDisruptionBudget> {
+			client.namespaceScoped(for: SwiftkubeModel.policy.v1.PodDisruptionBudget.self)
 		}
 	}
 

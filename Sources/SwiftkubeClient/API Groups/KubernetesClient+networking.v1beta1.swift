@@ -25,8 +25,8 @@ import SwiftkubeModel
 
 public protocol NetworkingV1Beta1API: Sendable {
 
-	var iPAddresses: ClusterScopedGenericKubernetesClient<networking.v1beta1.IPAddress> { get }
-	var serviceCIDRs: ClusterScopedGenericKubernetesClient<networking.v1beta1.ServiceCIDR> { get }
+	var iPAddresses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1beta1.IPAddress> { get }
+	var serviceCIDRs: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1beta1.ServiceCIDR> { get }
 }
 
 /// DSL for `networking.k8s.io.v1beta1` API Group
@@ -39,11 +39,11 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var iPAddresses: ClusterScopedGenericKubernetesClient<networking.v1beta1.IPAddress> {
-			client.clusterScoped(for: networking.v1beta1.IPAddress.self)
+		public var iPAddresses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1beta1.IPAddress> {
+			client.clusterScoped(for: SwiftkubeModel.networking.v1beta1.IPAddress.self)
 		}
-		public var serviceCIDRs: ClusterScopedGenericKubernetesClient<networking.v1beta1.ServiceCIDR> {
-			client.clusterScoped(for: networking.v1beta1.ServiceCIDR.self)
+		public var serviceCIDRs: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1beta1.ServiceCIDR> {
+			client.clusterScoped(for: SwiftkubeModel.networking.v1beta1.ServiceCIDR.self)
 		}
 	}
 

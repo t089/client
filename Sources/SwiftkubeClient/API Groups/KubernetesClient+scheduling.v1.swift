@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol SchedulingV1API: Sendable {
 
-	var priorityClasses: ClusterScopedGenericKubernetesClient<scheduling.v1.PriorityClass> { get }
+	var priorityClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.scheduling.v1.PriorityClass> { get }
 }
 
 /// DSL for `scheduling.k8s.io.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var priorityClasses: ClusterScopedGenericKubernetesClient<scheduling.v1.PriorityClass> {
-			client.clusterScoped(for: scheduling.v1.PriorityClass.self)
+		public var priorityClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.scheduling.v1.PriorityClass> {
+			client.clusterScoped(for: SwiftkubeModel.scheduling.v1.PriorityClass.self)
 		}
 	}
 

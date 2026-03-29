@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol StorageV1Alpha1API: Sendable {
 
-	var volumeAttributesClasses: ClusterScopedGenericKubernetesClient<storage.v1alpha1.VolumeAttributesClass> { get }
+	var volumeAttributesClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1alpha1.VolumeAttributesClass> { get }
 }
 
 /// DSL for `storage.k8s.io.v1alpha1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var volumeAttributesClasses: ClusterScopedGenericKubernetesClient<storage.v1alpha1.VolumeAttributesClass> {
-			client.clusterScoped(for: storage.v1alpha1.VolumeAttributesClass.self)
+		public var volumeAttributesClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.storage.v1alpha1.VolumeAttributesClass> {
+			client.clusterScoped(for: SwiftkubeModel.storage.v1alpha1.VolumeAttributesClass.self)
 		}
 	}
 

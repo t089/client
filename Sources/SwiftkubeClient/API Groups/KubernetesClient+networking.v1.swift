@@ -25,11 +25,11 @@ import SwiftkubeModel
 
 public protocol NetworkingV1API: Sendable {
 
-	var iPAddresses: ClusterScopedGenericKubernetesClient<networking.v1.IPAddress> { get }
-	var ingresses: NamespacedGenericKubernetesClient<networking.v1.Ingress> { get }
-	var ingressClasses: ClusterScopedGenericKubernetesClient<networking.v1.IngressClass> { get }
-	var networkPolicies: NamespacedGenericKubernetesClient<networking.v1.NetworkPolicy> { get }
-	var serviceCIDRs: ClusterScopedGenericKubernetesClient<networking.v1.ServiceCIDR> { get }
+	var iPAddresses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1.IPAddress> { get }
+	var ingresses: NamespacedGenericKubernetesClient<SwiftkubeModel.networking.v1.Ingress> { get }
+	var ingressClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1.IngressClass> { get }
+	var networkPolicies: NamespacedGenericKubernetesClient<SwiftkubeModel.networking.v1.NetworkPolicy> { get }
+	var serviceCIDRs: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1.ServiceCIDR> { get }
 }
 
 /// DSL for `networking.k8s.io.v1` API Group
@@ -42,20 +42,20 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var iPAddresses: ClusterScopedGenericKubernetesClient<networking.v1.IPAddress> {
-			client.clusterScoped(for: networking.v1.IPAddress.self)
+		public var iPAddresses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1.IPAddress> {
+			client.clusterScoped(for: SwiftkubeModel.networking.v1.IPAddress.self)
 		}
-		public var ingresses: NamespacedGenericKubernetesClient<networking.v1.Ingress> {
-			client.namespaceScoped(for: networking.v1.Ingress.self)
+		public var ingresses: NamespacedGenericKubernetesClient<SwiftkubeModel.networking.v1.Ingress> {
+			client.namespaceScoped(for: SwiftkubeModel.networking.v1.Ingress.self)
 		}
-		public var ingressClasses: ClusterScopedGenericKubernetesClient<networking.v1.IngressClass> {
-			client.clusterScoped(for: networking.v1.IngressClass.self)
+		public var ingressClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1.IngressClass> {
+			client.clusterScoped(for: SwiftkubeModel.networking.v1.IngressClass.self)
 		}
-		public var networkPolicies: NamespacedGenericKubernetesClient<networking.v1.NetworkPolicy> {
-			client.namespaceScoped(for: networking.v1.NetworkPolicy.self)
+		public var networkPolicies: NamespacedGenericKubernetesClient<SwiftkubeModel.networking.v1.NetworkPolicy> {
+			client.namespaceScoped(for: SwiftkubeModel.networking.v1.NetworkPolicy.self)
 		}
-		public var serviceCIDRs: ClusterScopedGenericKubernetesClient<networking.v1.ServiceCIDR> {
-			client.clusterScoped(for: networking.v1.ServiceCIDR.self)
+		public var serviceCIDRs: ClusterScopedGenericKubernetesClient<SwiftkubeModel.networking.v1.ServiceCIDR> {
+			client.clusterScoped(for: SwiftkubeModel.networking.v1.ServiceCIDR.self)
 		}
 	}
 

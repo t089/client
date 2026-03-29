@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol CoordinationV1Alpha2API: Sendable {
 
-	var leaseCandidates: NamespacedGenericKubernetesClient<coordination.v1alpha2.LeaseCandidate> { get }
+	var leaseCandidates: NamespacedGenericKubernetesClient<SwiftkubeModel.coordination.v1alpha2.LeaseCandidate> { get }
 }
 
 /// DSL for `coordination.k8s.io.v1alpha2` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var leaseCandidates: NamespacedGenericKubernetesClient<coordination.v1alpha2.LeaseCandidate> {
-			client.namespaceScoped(for: coordination.v1alpha2.LeaseCandidate.self)
+		public var leaseCandidates: NamespacedGenericKubernetesClient<SwiftkubeModel.coordination.v1alpha2.LeaseCandidate> {
+			client.namespaceScoped(for: SwiftkubeModel.coordination.v1alpha2.LeaseCandidate.self)
 		}
 	}
 

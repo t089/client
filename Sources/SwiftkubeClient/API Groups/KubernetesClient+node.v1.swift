@@ -25,7 +25,7 @@ import SwiftkubeModel
 
 public protocol NodeV1API: Sendable {
 
-	var runtimeClasses: ClusterScopedGenericKubernetesClient<node.v1.RuntimeClass> { get }
+	var runtimeClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.node.v1.RuntimeClass> { get }
 }
 
 /// DSL for `node.k8s.io.v1` API Group
@@ -38,8 +38,8 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var runtimeClasses: ClusterScopedGenericKubernetesClient<node.v1.RuntimeClass> {
-			client.clusterScoped(for: node.v1.RuntimeClass.self)
+		public var runtimeClasses: ClusterScopedGenericKubernetesClient<SwiftkubeModel.node.v1.RuntimeClass> {
+			client.clusterScoped(for: SwiftkubeModel.node.v1.RuntimeClass.self)
 		}
 	}
 
