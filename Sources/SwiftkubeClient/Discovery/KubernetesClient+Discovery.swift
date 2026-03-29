@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020-2026 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -130,11 +130,9 @@ internal class DiscoveryClient: DiscoveryAPI, RequestHandlerType {
 			allResourceLists.append(it)
 		}
 
-		let merged = allResourceLists.reduce(into: [meta.v1.APIResourceList]()) { (acc, other: meta.v1.APIResourceList) in
+		return allResourceLists.reduce(into: [meta.v1.APIResourceList]()) { (acc, other: meta.v1.APIResourceList) in
 			acc.append(other)
 		}
-
-		return merged
 	}
 
 	func serverResources(forGroupVersion groupVersion: String) async throws -> meta.v1.APIResourceList {

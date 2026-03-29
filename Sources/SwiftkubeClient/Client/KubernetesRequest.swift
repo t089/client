@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020-2026 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -106,7 +106,7 @@ public struct KubernetesRequest: Sendable {
 
 // MARK: - RequestBody
 
-internal enum RequestBody: Sendable {
+internal enum RequestBody {
 	case resource(payload: any KubernetesAPIResource)
 	case subResource(type: ResourceType, payload: any KubernetesResource)
 
