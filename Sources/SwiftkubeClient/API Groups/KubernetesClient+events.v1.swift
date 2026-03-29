@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - EventsV1API
@@ -34,7 +38,7 @@ public extension KubernetesClient {
 			self.client = client
 		}
 
-		public var events: NamespacedGenericKubernetesClient<events.v1.Event> {
+		public var events: NamespacedGenericKubernetesClient<SwiftkubeModel.events.v1.Event> {
 			client.namespaceScoped(for: SwiftkubeModel.events.v1.Event.self)
 		}
 	}

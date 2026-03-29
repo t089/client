@@ -15,7 +15,11 @@
 //
 
 import AsyncHTTPClient
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import Logging
 import NIO
 import SwiftkubeModel
@@ -43,7 +47,7 @@ internal struct ResourceEventTransformer<Resource: KubernetesAPIResource>: DataS
 		}
 
 		guard
-			let jsonData = try? JSONSerialization.data(withJSONObject: event.object.properties),
+			let jsonData = try? JSONEncoder().encode(event.object),
 			let resource = try? decoder.decode(Resource.self, from: jsonData)
 		else {
 			return .failure(SwiftkubeClientError.decodingError("Error deserializing \(String(describing: Resource.self))"))

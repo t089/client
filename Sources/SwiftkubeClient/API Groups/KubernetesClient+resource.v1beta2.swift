@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - ResourceV1Beta2API
@@ -40,15 +44,12 @@ public extension KubernetesClient {
 		public var deviceClasses: ClusterScopedGenericKubernetesClient<resource.v1beta2.DeviceClass> {
 			client.clusterScoped(for: resource.v1beta2.DeviceClass.self)
 		}
-
 		public var resourceClaims: NamespacedGenericKubernetesClient<resource.v1beta2.ResourceClaim> {
 			client.namespaceScoped(for: resource.v1beta2.ResourceClaim.self)
 		}
-
 		public var resourceClaimTemplates: NamespacedGenericKubernetesClient<resource.v1beta2.ResourceClaimTemplate> {
 			client.namespaceScoped(for: resource.v1beta2.ResourceClaimTemplate.self)
 		}
-
 		public var resourceSlices: ClusterScopedGenericKubernetesClient<resource.v1beta2.ResourceSlice> {
 			client.clusterScoped(for: resource.v1beta2.ResourceSlice.self)
 		}

@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - AuthorizationV1API
@@ -40,15 +44,12 @@ public extension KubernetesClient {
 		public var localSubjectAccessReviews: NamespacedGenericKubernetesClient<authorization.v1.LocalSubjectAccessReview> {
 			client.namespaceScoped(for: authorization.v1.LocalSubjectAccessReview.self)
 		}
-
 		public var selfSubjectAccessReviews: ClusterScopedGenericKubernetesClient<authorization.v1.SelfSubjectAccessReview> {
 			client.clusterScoped(for: authorization.v1.SelfSubjectAccessReview.self)
 		}
-
 		public var selfSubjectRulesReviews: ClusterScopedGenericKubernetesClient<authorization.v1.SelfSubjectRulesReview> {
 			client.clusterScoped(for: authorization.v1.SelfSubjectRulesReview.self)
 		}
-
 		public var subjectAccessReviews: ClusterScopedGenericKubernetesClient<authorization.v1.SubjectAccessReview> {
 			client.clusterScoped(for: authorization.v1.SubjectAccessReview.self)
 		}

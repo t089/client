@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - FlowControlV1API
@@ -38,7 +42,6 @@ public extension KubernetesClient {
 		public var flowSchemas: ClusterScopedGenericKubernetesClient<flowcontrol.v1.FlowSchema> {
 			client.clusterScoped(for: flowcontrol.v1.FlowSchema.self)
 		}
-
 		public var priorityLevelConfigurations: ClusterScopedGenericKubernetesClient<flowcontrol.v1.PriorityLevelConfiguration> {
 			client.clusterScoped(for: flowcontrol.v1.PriorityLevelConfiguration.self)
 		}

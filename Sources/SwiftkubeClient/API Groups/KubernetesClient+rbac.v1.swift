@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - RBACV1API
@@ -40,15 +44,12 @@ public extension KubernetesClient {
 		public var clusterRoles: ClusterScopedGenericKubernetesClient<rbac.v1.ClusterRole> {
 			client.clusterScoped(for: rbac.v1.ClusterRole.self)
 		}
-
 		public var clusterRoleBindings: ClusterScopedGenericKubernetesClient<rbac.v1.ClusterRoleBinding> {
 			client.clusterScoped(for: rbac.v1.ClusterRoleBinding.self)
 		}
-
 		public var roles: NamespacedGenericKubernetesClient<rbac.v1.Role> {
 			client.namespaceScoped(for: rbac.v1.Role.self)
 		}
-
 		public var roleBindings: NamespacedGenericKubernetesClient<rbac.v1.RoleBinding> {
 			client.namespaceScoped(for: rbac.v1.RoleBinding.self)
 		}

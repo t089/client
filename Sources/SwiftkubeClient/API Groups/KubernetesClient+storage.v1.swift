@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - StorageV1API
@@ -41,19 +45,15 @@ public extension KubernetesClient {
 		public var csiDrivers: ClusterScopedGenericKubernetesClient<storage.v1.CSIDriver> {
 			client.clusterScoped(for: storage.v1.CSIDriver.self)
 		}
-
 		public var csiNodes: ClusterScopedGenericKubernetesClient<storage.v1.CSINode> {
 			client.clusterScoped(for: storage.v1.CSINode.self)
 		}
-
 		public var csiStorageCapacities: NamespacedGenericKubernetesClient<storage.v1.CSIStorageCapacity> {
 			client.namespaceScoped(for: storage.v1.CSIStorageCapacity.self)
 		}
-
 		public var storageClasses: ClusterScopedGenericKubernetesClient<storage.v1.StorageClass> {
 			client.clusterScoped(for: storage.v1.StorageClass.self)
 		}
-
 		public var volumeAttachments: ClusterScopedGenericKubernetesClient<storage.v1.VolumeAttachment> {
 			client.clusterScoped(for: storage.v1.VolumeAttachment.self)
 		}

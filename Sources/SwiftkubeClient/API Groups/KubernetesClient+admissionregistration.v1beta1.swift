@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - AdmissionRegistrationV1Beta1API
@@ -38,7 +42,6 @@ public extension KubernetesClient {
 		public var validatingAdmissionPolicies: ClusterScopedGenericKubernetesClient<admissionregistration.v1beta1.ValidatingAdmissionPolicy> {
 			client.clusterScoped(for: admissionregistration.v1beta1.ValidatingAdmissionPolicy.self)
 		}
-
 		public var validatingAdmissionPolicyBindings: ClusterScopedGenericKubernetesClient<admissionregistration.v1beta1.ValidatingAdmissionPolicyBinding> {
 			client.clusterScoped(for: admissionregistration.v1beta1.ValidatingAdmissionPolicyBinding.self)
 		}

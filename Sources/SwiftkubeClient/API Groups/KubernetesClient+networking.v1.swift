@@ -1,5 +1,5 @@
 //
-// Copyright 2025 Swiftkube Project
+// Copyright 2020 Swiftkube Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,11 @@
 // limitations under the License.
 //
 
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import SwiftkubeModel
 
 // MARK: - NetworkingV1API
@@ -41,19 +45,15 @@ public extension KubernetesClient {
 		public var iPAddresses: ClusterScopedGenericKubernetesClient<networking.v1.IPAddress> {
 			client.clusterScoped(for: networking.v1.IPAddress.self)
 		}
-
 		public var ingresses: NamespacedGenericKubernetesClient<networking.v1.Ingress> {
 			client.namespaceScoped(for: networking.v1.Ingress.self)
 		}
-
 		public var ingressClasses: ClusterScopedGenericKubernetesClient<networking.v1.IngressClass> {
 			client.clusterScoped(for: networking.v1.IngressClass.self)
 		}
-
 		public var networkPolicies: NamespacedGenericKubernetesClient<networking.v1.NetworkPolicy> {
 			client.namespaceScoped(for: networking.v1.NetworkPolicy.self)
 		}
-
 		public var serviceCIDRs: ClusterScopedGenericKubernetesClient<networking.v1.ServiceCIDR> {
 			client.clusterScoped(for: networking.v1.ServiceCIDR.self)
 		}

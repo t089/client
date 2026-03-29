@@ -29,13 +29,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+#if canImport(FoundationEssentials)
+import FoundationEssentials
+#else
 import Foundation
+#endif
 import Logging
 import NIOSSL
+import Subprocess
+#if canImport(System)
+import System
+#else
+import SystemPackage
+#endif
 
 public extension AuthInfo {
 
-	func authentication(logger: Logger?) -> KubernetesClientAuthentication? {
+	func authentication(logger: Logger?) async -> KubernetesClientAuthentication? {
 		if let username = username, let password = password {
 			return .basicAuth(username: username, password: password)
 		}
@@ -95,7 +105,7 @@ public extension AuthInfo {
 		#if os(Linux) || os(macOS)
 			do {
 				if let exec {
-					let outputData = try run(
+					let outputData = try await run(
 						command: exec.command,
 						arguments: exec.args
 					)
@@ -148,28 +158,22 @@ public extension ExecCredential {
 }
 
 #if os(Linux) || os(macOS)
-	internal func run(command: String, arguments: [String]? = nil) throws -> Data {
-		func run(_ command: String, _ arguments: [String]?) throws -> Data {
-			let task = Process()
-			task.executableURL = URL(fileURLWithPath: command)
-			arguments.flatMap { task.arguments = $0 }
-
-			let pipe = Pipe()
-			task.standardOutput = pipe
-
-			try task.run()
-
-			return pipe.fileHandleForReading.availableData
+	internal func run(command: String, arguments: [String]? = nil) async throws -> Data {
+		let resolveResult = try await Subprocess.run(
+			.path("/usr/bin/which"),
+			arguments: Arguments([command]),
+			output: .string(limit: 1024)
+		)
+		guard let resolvedPath = resolveResult.standardOutput?
+			.trimmingCharacters(in: .whitespacesAndNewlines) else {
+			throw SwiftkubeClientError.badRequest("Could not resolve command: \(command)")
 		}
 
-		func resolve(command: String) throws -> String {
-			try String(
-				decoding:
-				run("/usr/bin/which", ["\(command)"]),
-				as: UTF8.self
-			).trimmingCharacters(in: .whitespacesAndNewlines)
-		}
-
-		return try run(resolve(command: command), arguments)
+		let result = try await Subprocess.run(
+			.path(FilePath(resolvedPath)),
+			arguments: Arguments(arguments ?? []),
+			output: .bytes(limit: 1024 * 1024)
+		)
+		return Data(result.standardOutput)
 	}
 #endif
