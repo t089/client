@@ -23,7 +23,6 @@ import Foundation
 #endif
 import Logging
 import NIO
-import NIOFoundationCompat
 import SwiftkubeModel
 
 // MARK: - RequestHandlerType
@@ -67,7 +66,7 @@ internal extension RequestHandlerType {
 				throw SwiftkubeClientError.emptyResponse
 			}
 
-			let data = Data(buffer: byteBuffer)
+			let data = byteBuffer.readableData
 
 			guard (200 ..< 400) ~= response.status.code else {
 				guard let status = try? jsonDecoder.decode(meta.v1.Status.self, from: data) else {
@@ -116,7 +115,7 @@ internal extension RequestHandlerType {
 				throw SwiftkubeClientError.emptyResponse
 			}
 
-			let data = Data(buffer: byteBuffer)
+			let data = byteBuffer.readableData
 
 			guard (200 ..< 400) ~= response.status.code else {
 				guard let status = try? jsonDecoder.decode(meta.v1.Status.self, from: data) else {
@@ -126,11 +125,7 @@ internal extension RequestHandlerType {
 				throw SwiftkubeClientError.statusError(status)
 			}
 
-			guard let text = String(data: data, encoding: .utf8) else {
-				throw SwiftkubeClientError.decodingError("Couldn't decode response")
-			}
-
-			return text
+			return String(decoding: byteBuffer.readableBytesView, as: UTF8.self)
 		} catch {
 			KubernetesClient.updateFailureMetrics(startTime: startTime, request: request)
 			throw error

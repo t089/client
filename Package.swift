@@ -19,7 +19,7 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/apple/swift-log.git", .upToNextMajor(from: "1.6.2")),
-		.package(url: "https://github.com/apple/swift-metrics.git", .upToNextMajor(from: "2.5.1")),
+		.package(url: "https://github.com/apple/swift-metrics.git", branch: "main"),
 		.package(url: "https://github.com/apple/swift-nio", .upToNextMajor(from: "2.80.0")),
 		.package(url: "https://github.com/jpsim/Yams.git", .upToNextMajor(from: "5.1.3")),
 		.package(url: "https://github.com/swiftkube/model.git", .upToNextMinor(from: "0.18.0")),
@@ -35,7 +35,6 @@ let package = Package(
 				.product(name: "Metrics", package: "swift-metrics"),
 				.product(name: "NIO", package: "swift-nio"),
 				.product(name: "NIOConcurrencyHelpers", package: "swift-nio"),
-				.product(name: "NIOFoundationCompat", package: "swift-nio"),
 				.product(name: "SwiftkubeModel", package: "model"),
 				.product(name: "Subprocess", package: "swift-subprocess"),
 				.product(name: "Yams", package: "Yams"),

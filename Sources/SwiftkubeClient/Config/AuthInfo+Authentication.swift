@@ -105,10 +105,12 @@ public extension AuthInfo {
 		#if os(Linux) || os(macOS)
 			do {
 				if let exec {
-					let outputData = try await run(
-						command: exec.command,
-						arguments: exec.args
+					let result = try await Subprocess.run(
+						.name(exec.command),
+						arguments: Arguments(exec.args ?? []),
+						output: .bytes(limit: 1024 * 1024)
 					)
+					let outputData = Data(result.standardOutput)
 
 					let decoder = JSONDecoder()
 					decoder.dateDecodingStrategy = .iso8601
@@ -157,23 +159,3 @@ public extension ExecCredential {
 	}
 }
 
-#if os(Linux) || os(macOS)
-	internal func run(command: String, arguments: [String]? = nil) async throws -> Data {
-		let resolveResult = try await Subprocess.run(
-			.path("/usr/bin/which"),
-			arguments: Arguments([command]),
-			output: .string(limit: 1024)
-		)
-		guard let resolvedPath = resolveResult.standardOutput?
-			.trimmingCharacters(in: .whitespacesAndNewlines) else {
-			throw SwiftkubeClientError.badRequest("Could not resolve command: \(command)")
-		}
-
-		let result = try await Subprocess.run(
-			.path(FilePath(resolvedPath)),
-			arguments: Arguments(arguments ?? []),
-			output: .bytes(limit: 1024 * 1024)
-		)
-		return Data(result.standardOutput)
-	}
-#endif

@@ -132,7 +132,7 @@ public actor SwiftkubeClientTask<Output: Sendable> {
 						}
 					}
 				} catch {
-					logger.debug("Error occurred while streaming data: \(error.localizedDescription)")
+					logger.debug("Error occurred while streaming data: \(error)")
 				}
 
 				guard !Task.isCancelled else {

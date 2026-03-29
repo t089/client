@@ -49,7 +49,7 @@ public extension KubernetesClientConfig {
 		timeout: HTTPClient.Configuration.Timeout? = nil,
 		redirectConfiguration: HTTPClient.Configuration.RedirectConfiguration? = nil,
 		logger: Logger?
-	) throws -> KubernetesClientConfig? {
+	) async throws -> KubernetesClientConfig? {
 		let kubeConfig: KubeConfig? = {
 			if let config = try? KubeConfig.fromEnvironment() {
 				return config
@@ -66,7 +66,7 @@ public extension KubernetesClientConfig {
 			return nil
 		}
 
-		return try from(
+		return try await from(
 			kubeConfig: kubeConfig,
 			contextName: nil,
 			timeout: timeout,
@@ -91,8 +91,8 @@ public extension KubernetesClientConfig {
 		timeout: HTTPClient.Configuration.Timeout? = nil,
 		redirectConfiguration: HTTPClient.Configuration.RedirectConfiguration? = nil,
 		logger: Logger?
-	) throws -> KubernetesClientConfig? {
-		try from(
+	) async throws -> KubernetesClientConfig? {
+		try await from(
 			kubeConfig: kubeConfig,
 			contextName: nil,
 			timeout: timeout,
@@ -118,7 +118,7 @@ public extension KubernetesClientConfig {
 		timeout: HTTPClient.Configuration.Timeout? = nil,
 		redirectConfiguration: HTTPClient.Configuration.RedirectConfiguration? = nil,
 		logger: Logger?
-	) throws -> KubernetesClientConfig? {
+	) async throws -> KubernetesClientConfig? {
 		guard let targetContext = contextName ?? kubeConfig.currentContext else {
 			return nil
 		}
@@ -139,7 +139,7 @@ public extension KubernetesClientConfig {
 			return nil
 		}
 
-		guard let authentication = authInfo.authentication(logger: logger) else {
+		guard let authentication = await authInfo.authentication(logger: logger) else {
 			return nil
 		}
 

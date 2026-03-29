@@ -15,14 +15,8 @@
 //
 
 import AsyncHTTPClient
-#if canImport(FoundationEssentials)
-import FoundationEssentials
-#else
-import Foundation
-#endif
 import Logging
 import NIO
-import NIOFoundationCompat
 
 // MARK: - DataStreamerTransformer
 
@@ -77,20 +71,20 @@ internal actor DataStreamer<T: DataStreamerTransformer>: Sendable where T.Elemen
 						raw.lastIndex(of: UInt8(0x0A))
 					}
 
-					guard
-						let readableLines = lines,
-						let data = streamingBuffer.readData(length: readableLines + 1)
-					else {
+					guard let readableLines = lines else {
 						return continuation.finish()
 					}
 
-					guard let string = String(data: data, encoding: .utf8) else {
+					guard let bytes = streamingBuffer.readBytes(length: readableLines + 1) else {
 						continuation.finish(throwing: SwiftkubeClientError.decodingError("Could not deserialize payload"))
 						return
 					}
 
-					string.enumerateLines { line, _ in
-						let result = self.transformer.transform(input: line)
+					let string = String(decoding: bytes, as: UTF8.self)
+
+					for line in string.split(separator: "\n", omittingEmptySubsequences: false) {
+						guard !line.isEmpty else { continue }
+						let result = self.transformer.transform(input: String(line))
 						switch result {
 						case let .success(item): continuation.yield(item)
 						case let .failure(error): continuation.finish(throwing: error)
@@ -100,7 +94,7 @@ internal actor DataStreamer<T: DataStreamerTransformer>: Sendable where T.Elemen
 
 				continuation.finish()
 			} catch {
-				logger.debug("Error occurred: \(error.localizedDescription)")
+				logger.debug("Error occurred: \(error)")
 				continuation.finish(throwing: error)
 			}
 		}

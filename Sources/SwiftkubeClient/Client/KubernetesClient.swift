@@ -129,9 +129,9 @@ public actor KubernetesClient {
 	public init?(
 		provider: HTTPClient.EventLoopGroupProvider = .shared(MultiThreadedEventLoopGroup(numberOfThreads: 1)),
 		logger: Logger? = nil
-	) {
+	) async {
 		guard
-			let config = try? KubernetesClientConfig.initialize(logger: logger)
+			let config = try? await KubernetesClientConfig.initialize(logger: logger)
 		else {
 			return nil
 		}
@@ -152,9 +152,9 @@ public actor KubernetesClient {
 		contextName: String?,
 		provider: HTTPClient.EventLoopGroupProvider = .shared(MultiThreadedEventLoopGroup(numberOfThreads: 1)),
 		logger: Logger? = nil
-	) {
+	) async {
 		guard
-			let config = try? KubernetesClientConfig.from(kubeConfig: kubeConfig, contextName: contextName, logger: logger)
+			let config = try? await KubernetesClientConfig.from(kubeConfig: kubeConfig, contextName: contextName, logger: logger)
 		else {
 			return nil
 		}

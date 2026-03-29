@@ -47,7 +47,7 @@ public extension UnstructuredResource {
 	}
 
 	static func load(contentsOf url: URL) throws -> [UnstructuredResource] {
-		let yaml = try String(contentsOf: url)
+		let yaml = try String(contentsOf: url, encoding: .utf8)
 		return try load(yaml: yaml)
 	}
 }
