@@ -25,6 +25,7 @@ import NIOConcurrencyHelpers
 import NIOCore
 import NIOSSL
 import Yams
+import Algorithms
 
 // MARK: - KubernetesClientConfig
 
@@ -37,7 +38,7 @@ public struct KubernetesClientConfig: Sendable {
 	public let namespace: String
 	/// The ``KubernetesClientAuthentication`` scheme.
 	public let authentication: KubernetesClientAuthentication
-	/// NIOSSL trust store sources fot the client.
+	/// NIOSSL trust store sources for the client.
 	public let trustRoots: NIOSSLTrustRoots?
 	/// Skips TLS verification for all API requests.
 	public let insecureSkipTLSVerify: Bool
@@ -123,7 +124,7 @@ public final class CachedFileTokenSource: @unchecked Sendable {
 			return nil
 		}
 
-		let trimmed = newToken.trimmingCharacters(in: .whitespacesAndNewlines)
+		let trimmed = String(newToken.trimming(while: { $0.isWhitespace || $0.isNewline }))
 		state.cachedToken = trimmed
 		state.expiry = now + state.cacheDuration
 		return trimmed

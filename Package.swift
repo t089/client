@@ -19,12 +19,13 @@ let package = Package(
 	],
 	dependencies: [
 		.package(url: "https://github.com/apple/swift-log.git", .upToNextMajor(from: "1.6.4")),
-		.package(url: "https://github.com/apple/swift-metrics.git", branch: "main"),
+		.package(url: "https://github.com/apple/swift-metrics.git", .upToNextMajor(from: "2.9.0")),
 		.package(url: "https://github.com/apple/swift-nio", .upToNextMajor(from: "2.86.2")),
-		.package(url: "https://github.com/jpsim/Yams.git", .upToNextMajor(from: "5.4.0")),
-		.package(path: "../model"),
+		.package(url: "https://github.com/t089/Yams.git", branch: "foundation-essentials"),
+		.package(url: "https://github.com/t089/model.git", branch: "foundation-essentials"),
 		.package(url: "https://github.com/swift-server/async-http-client.git", .upToNextMajor(from: "1.29.1")),
 		.package(url: "https://github.com/swiftlang/swift-subprocess.git", .upToNextMajor(from: "0.2.1")),
+		.package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "1.0.0")),
 	],
 	targets: [
 		.target(
@@ -38,6 +39,7 @@ let package = Package(
 				.product(name: "SwiftkubeModel", package: "model"),
 				.product(name: "Subprocess", package: "swift-subprocess"),
 				.product(name: "Yams", package: "Yams"),
+				.product(name: "Algorithms", package: "swift-algorithms"),
 			]
 		),
 		.testTarget(
